@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bookly — Local Book Library</title>
+    <link rel="icon" type="image/jpg"
+        href="https://static.vecteezy.com/system/resources/previews/065/960/156/non_2x/open-book-icon-simple-book-illustration-reading-symbol-free-vector.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+    <!-- =========================================================
+     AUTH PAGE
+     ========================================================= -->
+
+    <div id="auth-page" class="auth-page">
+
+        <div class="auth-background">
+            <div class="orb orb-one"></div>
+            <div class="orb orb-two"></div>
+            <div class="orb orb-three"></div>
+        </div>
+
+        <div class="auth-card">
+
+            <div class="brand auth-brand">
+                <div class="brand-icon">B</div>
+
+                <div>
+                    <strong>Bookly</strong>
+                    <span>Local Library</span>
+                </div>
+            </div>
+
+
+            <div class="auth-heading">
+                <h1 id="auth-title">Welcome back</h1>
+
+                <p id="auth-description">
+                    Sign in to continue to your library.
+                </p>
+            </div>
+
+
+            <div class="auth-tabs">
+
+                <button id="login-tab" class="auth-tab active" type="button">
+                    Login
+                </button>
+
+                <button id="register-tab" class="auth-tab" type="button">
+                    Register
+                </button>
+
+            </div>
+
+
+            <form id="auth-form">
+
+                <div id="username-field" class="form-group">
+
+                    <label for="username">
+                        Username
+                    </label>
+
+                    <input id="username" type="text" autocomplete="username" placeholder="Enter username" required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <input id="password" type="password" autocomplete="current-password" placeholder="Enter password"
+                        required>
+
+                </div>
+
+
+                <button id="auth-submit" class="primary-button auth-submit" type="submit">
+                    Sign In
+                </button>
+
+            </form>
+
+
+            <button id="guest-button" class="guest-button" type="button">
+                Continue as Guest
+            </button>
+
+
+            <div class="auth-footer">
+                Your local library. Your books. Your data.
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================================
+     APP
+     ========================================================= -->
+
+    <div id="app" class="app hidden">
+
+        <!-- NAVBAR -->
+
+        <header class="navbar">
+
+            <div class="navbar-left">
+
+                <button id="mobile-menu" class="icon-button mobile-only" type="button">
+                    ☰
+                </button>
+
+
+                <div class="brand">
+
+                    <div class="brand-icon">
+                        B
+                    </div>
+
+                    <div>
+                        <strong>Bookly</strong>
+                        <span>Local Library</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <nav id="main-nav">
+
+                <button class="nav-button active" data-view="home" type="button">
+                    Home
+                </button>
+
+                <button class="nav-button" data-view="books" type="button">
+                    Library
+                </button>
+
+                <button id="dashboard-nav" class="nav-button" data-view="dashboard" type="button">
+                    Dashboard
+                </button>
+
+                <button id="admin-nav" class="nav-button" data-view="admin" type="button">
+                    Admin
+                </button>
+
+            </nav>
+
+
+            <div class="navbar-right">
+
+                <button id="theme-toggle" class="icon-button" title="Toggle theme" type="button">
+                    ☾
+                </button>
+
+
+                <div id="user-chip" class="user-chip">
+                    <span id="user-avatar">
+                        G
+                    </span>
+
+                    <div>
+                        <strong id="user-name">
+                            Guest
+                        </strong>
+
+                        <small id="user-role">
+                            Guest
+                        </small>
+                    </div>
+                </div>
+
+
+                <button id="logout-button" class="logout-button" type="button">
+                    Logout
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- MOBILE NAV -->
+
+        <div id="mobile-nav" class="mobile-nav">
+
+            <button class="nav-button active" data-view="home" type="button">
+                Home
+            </button>
+
+            <button class="nav-button" data-view="books" type="button">
+                Library
+            </button>
+
+            <button class="nav-button" data-view="dashboard" type="button">
+                Dashboard
+            </button>
+
+            <button class="nav-button" data-view="admin" type="button">
+                Admin
+            </button>
+
+        </div>
+
+
+        <main>
+
+            <!-- =================================================
+             HOME
+             ================================================= -->
+
+            <section id="view-home" class="page-view active-view">
+
+                <div class="hero">
+
+                    <div class="hero-content">
+
+                        <div class="eyebrow">
+                            YOUR PERSONAL LIBRARY
+                        </div>
+
+                        <h1>
+                            A better way to
+                            <span>read.</span>
+                        </h1>
+
+                        <p>
+                            Discover, read and organize your
+                            local PDF collection in one beautiful
+                            place.
+                        </p>
+
+
+                        <div class="hero-actions">
+
+                            <button class="primary-button" data-view="books" type="button">
+                                Explore Library
+                            </button>
+
+                            <button class="secondary-button" data-view="dashboard" type="button">
+                                Dashboard
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="hero-visual">
+
+                        <div class="floating-book book-back">
+                            <div class="fake-lines"></div>
+                        </div>
+
+                        <div class="floating-book book-middle">
+                            <div class="fake-lines"></div>
+                        </div>
+
+                        <div class="floating-book book-front">
+
+                            <div class="book-cover-symbol">
+                                B
+                            </div>
+
+                            <strong>
+                                BOOKLY
+                            </strong>
+
+                            <small>
+                                LOCAL LIBRARY
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="section-heading">
+
+                    <div>
+                        <span>COLLECTION</span>
+                        <h2>Recently added</h2>
+                    </div>
+
+                    <button class="text-button" data-view="books" type="button">
+                        View all →
+                    </button>
+
+                </div>
+
+
+                <div id="home-books" class="book-grid"></div>
+
+            </section>
+
+
+            <!-- =================================================
+             BOOK LIBRARY
+             ================================================= -->
+
+            <section id="view-books" class="page-view">
+
+                <div class="page-header">
+
+                    <div>
+
+                        <div class="eyebrow">
+                            COLLECTION
+                        </div>
+
+                        <h1>
+                            Library
+                        </h1>
+
+                        <p>
+                            Browse every book in your collection.
+                        </p>
+
+                    </div>
+
+
+                    <div class="search-box">
+
+                        <span>⌕</span>
+
+                        <input id="book-search" type="search" placeholder="Search books...">
+
+                    </div>
+
+                </div>
+
+
+                <div id="books-grid" class="book-grid"></div>
+
+            </section>
+
+
+            <!-- =================================================
+             DASHBOARD
+             ================================================= -->
+
+            <section id="view-dashboard" class="page-view">
+
+                <div class="page-header">
+
+                    <div>
+
+                        <div class="eyebrow">
+                            OVERVIEW
+                        </div>
+
+                        <h1>
+                            Dashboard
+                        </h1>
+
+                        <p>
+                            Your library activity at a glance.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div id="dashboard-stats" class="stats-grid"></div>
+
+
+                <div class="dashboard-panel">
+
+                    <div class="section-heading compact">
+
+                        <div>
+                            <span>ACTIVITY</span>
+                            <h2>Recent books</h2>
+                        </div>
+
+                    </div>
+
+
+                    <div id="dashboard-books" class="mini-book-list"></div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+             ADMIN
+             ================================================= -->
+
+            <section id="view-admin" class="page-view">
+
+                <div class="page-header">
+
+                    <div>
+
+                        <div class="eyebrow">
+                            ADMINISTRATION
+                        </div>
+
+                        <h1>
+                            Manage Library
+                        </h1>
+
+                        <p>
+                            Add, edit and remove books.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="admin-layout">
+
+                    <div class="admin-panel">
+
+                        <div class="panel-heading">
+
+                            <div>
+                                <span>BOOK</span>
+
+                                <h2 id="admin-form-title">
+                                    Add new book
+                                </h2>
+                            </div>
+
+                        </div>
+
+
+                        <form id="book-form">
+
+                            <input id="book-id" type="hidden">
+
+
+                            <div class="form-group">
+
+                                <label for="book-title">
+                                    Book title
+                                </label>
+
+                                <input id="book-title" type="text" placeholder="Enter book title" required>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="book-file">
+                                    PDF file
+                                </label>
+
+                                <input id="book-file" type="file" accept="application/pdf,.pdf">
+
+                                <small class="field-help">
+                                    Maximum file size: 25 MB.
+                                </small>
+
+                            </div>
+
+
+                            <div class="form-actions">
+
+                                <button class="primary-button" type="submit">
+                                    Save Book
+                                </button>
+
+                                <button id="cancel-edit" class="secondary-button hidden" type="button">
+                                    Cancel
+                                </button>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
+
+                    <div class="admin-panel">
+
+                        <div class="panel-heading">
+
+                            <div>
+                                <span>BOOKS</span>
+
+                                <h2>
+                                    Manage collection
+                                </h2>
+                            </div>
+
+                            <span id="admin-book-count" class="count-badge">
+                                0
+                            </span>
+
+                        </div>
+
+
+                        <div id="admin-book-list" class="admin-book-list"></div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- =========================================================
+     BOOK MODAL
+     ========================================================= -->
+
+    <div id="book-modal" class="modal hidden">
+
+        <div class="book-modal">
+
+            <div class="modal-topbar">
+
+                <div>
+
+                    <span>
+                        BOOK DETAILS
+                    </span>
+
+                    <h2 id="modal-title">
+                        Book
+                    </h2>
+
+                </div>
+
+
+                <button id="modal-close" class="modal-close" type="button">
+                    ×
+                </button>
+
+            </div>
+
+
+            <div class="book-detail-layout">
+
+                <!-- LEFT INFORMATION -->
+
+                <aside class="book-info">
+
+                    <div class="cover-preview">
+
+                        <div class="cover-placeholder">
+
+                            <div>
+                                PDF
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="book-stats">
+
+                        <div>
+                            <strong id="up-count">
+                                0
+                            </strong>
+
+                            <small>
+                                Up-Votes
+                            </small>
+                        </div>
+
+
+                        <div>
+                            <strong id="down-count">
+                                0
+                            </strong>
+
+                            <small>
+                                Down-Votes
+                            </small>
+                        </div>
+
+
+                        <div>
+                            <strong id="avg">
+                                0.0
+                            </strong>
+
+                            <small>
+                                Rating
+                            </small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="vote-buttons">
+
+                        <button id="up-btn" class="vote-button" type="button">
+                            ↑ Up-Vote
+                        </button>
+
+                        <button id="down-btn" class="vote-button" type="button">
+                            ↓ Down-Vote
+                        </button>
+
+                    </div>
+
+
+                    <a id="modal-download" class="download-button" href="#" download>
+                        Download
+                    </a>
+
+
+                    <div class="rating-panel">
+
+                        <span>
+                            YOUR RATING
+                        </span>
+
+                        <p id="rating-label">
+                            Login to rate
+                        </p>
+
+
+                        <div id="stars" class="stars">
+
+                            <button data-rating="1">
+                                ★
+                            </button>
+
+                            <button data-rating="2">
+                                ★
+                            </button>
+
+                            <button data-rating="3">
+                                ★
+                            </button>
+
+                            <button data-rating="4">
+                                ★
+                            </button>
+
+                            <button data-rating="5">
+                                ★
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </aside>
+
+
+                <!-- RIGHT READER -->
+
+                <div class="detail-main">
+
+                    <div id="book-reader" class="book-reader">
+
+                        <div class="reader-toolbar">
+
+                            <div class="reader-left">
+
+                                <span class="reader-book-icon">
+                                    📖
+                                </span>
+
+                                <div>
+
+                                    <strong id="reader-title">
+                                        Book
+                                    </strong>
+
+                                    <small id="reader-status">
+                                        Loading...
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="reader-controls">
+
+                                <button id="reader-prev" class="reader-btn" title="Previous page" type="button">
+                                    ←
+                                </button>
+
+
+                                <div class="reader-page-count">
+
+                                    <span id="reader-current">
+                                        1
+                                    </span>
+
+                                    <span>/</span>
+
+                                    <span id="reader-total">
+                                        1
+                                    </span>
+
+                                </div>
+
+
+                                <button id="reader-next" class="reader-btn" title="Next page" type="button">
+                                    →
+                                </button>
+
+
+                                <span class="reader-divider"></span>
+
+
+                                <button id="reader-zoom-out" class="reader-btn" title="Zoom out" type="button">
+                                    −
+                                </button>
+
+
+                                <span id="reader-zoom" class="reader-zoom">
+                                    100%
+                                </span>
+
+
+                                <button id="reader-zoom-in" class="reader-btn" title="Zoom in" type="button">
+                                    +
+                                </button>
+
+
+                                <span class="reader-divider"></span>
+
+
+                                <button id="reader-fullscreen" class="reader-btn" title="Fullscreen" type="button">
+                                    ⛶
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <div id="book-reader-stage" class="book-reader-stage">
+
+                            <div class="book-shadow"></div>
+
+
+                            <button id="page-arrow-left" class="page-arrow page-arrow-left" type="button">
+                                ‹
+                            </button>
+
+
+                            <div id="book-open" class="book-open">
+
+                                <div class="book-page left-page">
+
+                                    <div class="page-inner">
+                                        <canvas id="page-left"></canvas>
+                                    </div>
+
+                                    <span id="page-number-left" class="page-number"></span>
+
+                                </div>
+
+
+                                <div class="book-spine"></div>
+
+
+                                <div class="book-page right-page">
+
+                                    <div class="page-inner">
+                                        <canvas id="page-right"></canvas>
+                                    </div>
+
+                                    <span id="page-number-right" class="page-number"></span>
+
+                                </div>
+
+                            </div>
+
+
+                            <button id="page-arrow-right" class="page-arrow page-arrow-right" type="button">
+                                ›
+                            </button>
+
+
+                            <div id="reader-loading" class="reader-loading">
+
+                                <div class="reader-spinner"></div>
+
+                                <strong>
+                                    Opening book...
+                                </strong>
+
+                                <small>
+                                    Preparing pages
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="reader-bottom">
+
+                            <div class="reader-hint">
+                                <span>← →</span>
+                                <small>Navigate</small>
+                            </div>
+
+                            <div class="reader-hint">
+                                <span>+</span>
+                                <small>Zoom</small>
+                            </div>
+
+                            <div class="reader-hint">
+                                <span>ESC</span>
+                                <small>Close</small>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- COMMENTS -->
+
+                    <div class="comments-section">
+
+                        <div class="comments-heading">
+
+                            <div>
+                                <span>
+                                    COMMUNITY
+                                </span>
+
+                                <h2>
+                                    Comments
+                                </h2>
+                            </div>
+
+                        </div>
+
+
+                        <div id="comments-list" class="comments-list"></div>
+
+
+                        <form id="comment-form" class="comment-form">
+
+                            <textarea id="comment-input" maxlength="1000"
+                                placeholder="Tulis pendapatmu tentang buku ini..."></textarea>
+
+
+                            <button id="comment-submit" class="primary-button" type="submit">
+                                Post Comment
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================================
+     TOAST
+     ========================================================= -->
+
+    <div id="toast-container" class="toast-container"></div>
+
+
+    <!-- =========================================================
+     PDF.JS
+     ========================================================= -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+    <script src="/app.js"></script>
+
+</body>
+
+</html>
